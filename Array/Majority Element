@@ -1,0 +1,26 @@
+https://leetcode.com/problems/majority-element/description/
+//approach  1: normal count of unique element and check if it is greater than n/2 
+//Approach 2:  using hashmap 
+//Approach 3: using Boyer-Moore Majority Voting Algorithm 
+
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        int val = nums[0];
+        int count = 1;
+        for(int i =1;i<nums.length;i++){
+            //if the value and the a[i] are same then increment count no pairing will be done 
+            if(val == nums[i]){
+                count++;
+            }else{
+                //decrement of the count variable if similar not found 
+                count--;
+            }
+            if(count ==0){
+                val = nums[i];
+                count = 1;
+            }
+        }
+        return val; // this can be the majority element 
+    }
+}
