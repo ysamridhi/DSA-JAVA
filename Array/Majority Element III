@@ -1,0 +1,30 @@
+https://www.codingninjas.com/studio/problems/elements-occur-more-than-n-k-times_1113146?leftPanelTab=0
+
+import java.util.* ;
+import java.io.*; 
+import java.util.ArrayList;
+
+public class Solution {
+	public static ArrayList<Integer> countTheNumber(ArrayList<Integer> arr, int n, int k) {
+      
+		ArrayList<Integer> ans = new ArrayList<>();
+		HashMap<Integer ,Integer> hm = new HashMap<>();
+		for(int i =0;i< n;i++){
+			int a = arr.get(i);
+			if(hm.containsKey(a)){
+				int val = hm.get(a);
+				val++;
+				hm.put(a, val);
+			}else{
+				hm.put(a, 1);
+			}
+		}
+		int check = n/k;
+		for(int x : hm.keySet()){
+			if(hm.get(x) >= check){
+				ans.add(x);
+			}
+		}
+		return ans;
+	}
+}
